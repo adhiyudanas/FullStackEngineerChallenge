@@ -21,7 +21,7 @@ let connection = mysql.createConnection({
     host: 'localhost',
     port: '3307',
     user: 'root',
-    password: 'supersecret',
+    password: 'reviewreview',
     database: 'employee_performance_review'
 });
 

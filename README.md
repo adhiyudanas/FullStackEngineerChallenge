@@ -37,3 +37,53 @@ Design a web application that allows employees to submit feedback toward each ot
 * Technology and design choices
 * Identify areas of your strengths
 * This is not a pass or fail test, this will serve as a common ground that we can deep dive together into specific issues
+
+-------------------------------------------  System Documentation from here ---------------------------------------------
+
+### How to start the application:
+1. clone this repository
+2. Start the database container
+    a. cd database
+    b. docker build -t review-database .
+    c. docker run -d -p 3307:3306 --name review-database -e MYSQL_ROOT_PASSWORD=reviewreview review-database
+3. Start the server side
+    a. cd api
+    b. npm install && npm start
+4. Start the client side
+    a. npm install -g @vue/cli
+    b. cd client
+    c. npm install && npm run dev
+    d. access localhost:8080 with your browser
+
+### Database
+* We are using mysql database deployed in a docker container
+* All the requirements are inclued in the database folder
+* We also provided sql scripts for inserting table and dummy data for development purpose because there are several          limitation that hasn't been implemented yet
+* Mysql is chosen because of flexibility with Node.js and due to time limitation
+
+### Server side (API)
+* all the files are included in the 'api' directory
+* We decided to use Node.js for our API
+* server.js manages all the communications with the client side
+* in the server.js, at least we are using Express, cors, and body parser
+
+### Client Side
+* Vue.js is used for developing the client side interface
+* By using Vue.js, we can separate the interfaces in component and structure them systematically
+* Separating all the components allows us to reuse the component; therefore minimizing sizes and increase performance
+* Easy to refactor, fix, maintenance also another factors why we are using vue.js
+* We also separate the CSS files into separate directory, following FLOCSS principle (Foundation, Layout, Component)
+
+### Future Development
+1. In the future, we can manage all these commands by using docker-compose to build all together
+2. We should deploy 'models' for communication with the database for minimizing error
+3. We can also use typescript for avoiding parameter type error
+4. Sass and SCSS should also be implemented for easy management and structured styling (for each component)
+5. CSS naming should be maintaned clearly to increase style flexibility and avoid confusing for adding more style and component in the future
+6. Integrated test should be deployed
+7. Finishing the system
+
+### General Requirement:
+1. Node.js
+2. Docker installed and activated
+3. Vue cli installed globally (for the time being)
