@@ -10,7 +10,8 @@
         <button type="submit" @click="loginProcess">Login</button>
       </div>
     </form>
-    <span>For development purpose we use dummy user and employee. You can use "admin" or "employee" for both username and password</span>
+    <span>For development purpose we use dummy admin and employee. You can use "admin" for both username and password</span>
+    <br><span>We have 3 employees, registered as 'employee_a', 'employee_b', 'employee_c' (insert as username and password)</span>
   </div>
 </template>
 
@@ -37,11 +38,9 @@ export default {
       if (loginData.uname === 'admin') {
         // go to the admin page
         this.$router.push({name: 'Admin', params: {user_id: loginData.uname}})
-      } else if (loginData.uname === 'employee') {
+      } else {
         // go to the employee page
         this.$router.push({name: 'Employee', params: {user_id: loginData.uname}})
-      } else {
-        alert('user not registered')
       }
     }
   }

@@ -66,6 +66,7 @@ export default {
     height: 37vw;
     padding: 5vw;
     border: solid 1px black;
+    border-radius: 5px;
 }
 
 .thumbnail {
@@ -77,6 +78,7 @@ export default {
     margin-right: 5px;
     color: white;
     background:#fb4400;
+    border-radius: 5px;
 }
 
 .thumbnail:hover {

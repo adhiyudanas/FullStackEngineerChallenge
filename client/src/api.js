@@ -11,7 +11,16 @@ export function getEmployees () {
 }
 
 /**
- * collect employee feedback
+ * collect single employee data
+ */
+
+export function getSingleEmployee (id) {
+  return axios.get(`${BASE_URL}/employees/${id}`)
+    .then(response => response.data)
+}
+
+/**
+ * collect employee feedbacks
  */
 
 export function getFeedbacks (id) {
@@ -29,13 +38,14 @@ export function getRequestFeedbacks (id) {
 };
 
 /**
- * add new employee
- */
-
-/**
  * submit feedback
  */
 
 /**
- *
+ * submit requested review
+ */
+
+/**
+ * add new employee
+ * to be implemented
  */

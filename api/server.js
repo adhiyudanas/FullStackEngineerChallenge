@@ -51,6 +51,21 @@ app.get('/employees', function (req, res) {
 });
 
 /**
+ * get single user for each employee page
+ */
+
+app.get('/employees/:id', function (req, res) {
+  let user_id = req.params.id;
+  if (!user_id) {
+   return res.status(400).send({ error: true, message: 'Please provide user_id' });
+  }
+  connection.query('SELECT * FROM employees where user_id=?', user_id, function (error, results, fields) {
+   if (error) throw error;
+    return res.send({ error: false, data: results[0]});
+  });
+});
+
+/**
  * from the admin view, admin can add new employee
  * for the time being, admin can only add name, department, and DOB
  * Adding new employee to the 'employees' table doesn't mean adding the user account
@@ -71,6 +86,8 @@ app.post('/addNewEmployee', function (req, res) {
 /**
  * assign feedback request to employee from admin view
  * admin can assign feedback to the employee
+ * (to be implemented)
+ * firsthand, we need to check whether the assignment already exist or not
  */
 
 /**
@@ -111,13 +128,14 @@ app.get('/employeeRequestedFeedback/:id', function (req, res) {
 
 app.put('/submitFeedback/:id', function (req, res) {
   let user_id = req.params.id;
-  let user = req.body.user;
-  if (!user_id) {
-    return res.status(400).send({ error: user, message: 'Please provide user and user_id' });
+  let feedback = req.body.feedback;
+  if (!feedback) {
+    return res.status(400).send({ error: feedback, message: 'Please provide feedback' });
   }
-  connection.query("UPDATE users SET user = ? WHERE id = ?", [user, user_id], function (error, results, fields) {
+  connection.query("UPDATE reviews SET feedback_content = ? WHERE target_user_id = ?", [feedback, user_id], 
+   function (error, results, fields) {
     if (error) throw error;
-    return res.send({ error: false, data: results, message: 'user has been updated successfully.' });
+    return res.send({ error: false, data: results, message: 'feedback has been submitted.' });
    });
 });
 
@@ -126,6 +144,19 @@ app.put('/submitFeedback/:id', function (req, res) {
  * when employee received feedback either from the admin or another employee,
  * they can submit response toward the feedback given
  */
+
+app.put('/submitRequestedFeedback/:id', function (req, res) {
+  let user_id = req.params.id;
+  let reviews = req.body.reviews;
+  if (!reviews) {
+    return res.status(400).send({ error: reviews, message: 'Please provide reviews' });
+  }
+  connection.query("UPDATE reviews SET review_content = ? WHERE reviewer_user_id = ?", [reviews, user_id], 
+   function (error, results, fields) {
+    if (error) throw error;
+    return res.send({ error: false, data: results, message: 'reviews has been submitted.' });
+   });
+});
 
 // set port
 app.listen(3000, function () {

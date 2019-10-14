@@ -1,8 +1,8 @@
 <template>
   <div class="admin">
-      <Header/>
-      <button @click="addNewEmployee">Add Employee</button>
+      <Header :userType="'Admin'"/>
       <div class="admin-wrapper">
+        <label class="addNewEmployee-label"><button @click="addNewEmployee">Add New Employee</button></label>
         <!-- pass the employee Data to child component for creating employee list-->
         <EmployeeThumbnail :employeeData="employeeData"/>
         <AddNewEmployee v-if="newEmpFlag"/>
@@ -35,7 +35,6 @@ export default {
   methods: {
     addNewEmployee () {
       this.newEmpFlag = !this.newEmpFlag
-      console.log('add new employee')
     }
   },
   mounted () {
@@ -50,5 +49,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-@import '../assets/css/object/pages/admin.css';
+.addNewEmployee-label {
+    top: 3vw;
+    left: 42vw;
+    position: relative;
+}
 </style>

@@ -49,18 +49,21 @@ export default {
   },
   mounted () {
     // get all the feedbacks and request
+    // in the future need to be handled inside a promise
     getFeedbacks(this.employeeInformation.user_id)
       .then(data => {
-        this.dispFeedback = true
         this.feedbacks = data.data
-        console.log(this.feedbacks)
+        if (data.data.length !== 0) {
+          this.dispFeedback = true
+        }
       })
       .catch(err => alert(err))
     getRequestFeedbacks(this.employeeInformation.user_id)
       .then(data => {
-        this.dispFeedbackRequest = true
         this.feedbackRequest = data.data
-        console.log(this.feedbackRequest)
+        if (data.data.length !== 0) {
+          this.dispFeedbackRequest = true
+        }
       })
       .catch(err => alert(err))
   }

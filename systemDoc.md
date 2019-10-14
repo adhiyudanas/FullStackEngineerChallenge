@@ -9,8 +9,9 @@ How to start the application:
     a. cd api
     b. npm install && npm start
 3. Start the client side
-    a. cd client
-    b. npm install && npm run dev
+    a. npm install -g @vue/cli
+    b. cd client
+    c. npm install && npm run dev
     d. access localhost:8080
 
 In the future, we can manage all these commands by using docker-compose, but due to limitation of time we need to initiate separately
@@ -22,4 +23,3 @@ Assumption:
 
 
 Node.js as the API and mysql as the database
-for the front end we are using 
