@@ -43,17 +43,17 @@ Design a web application that allows employees to submit feedback toward each ot
 ### How to start the application:
 1. clone this repository
 2. Start the database container
-    a. cd database
-    b. docker build -t review-database .
-    c. docker run -d -p 3307:3306 --name review-database -e MYSQL_ROOT_PASSWORD=reviewreview review-database
+    * cd database
+    * docker build -t review-database .
+    * docker run -d -p 3307:3306 --name review-database -e MYSQL_ROOT_PASSWORD=reviewreview review-database
 3. Start the server side
-    a. cd api
-    b. npm install && npm start
+    * cd api
+    * npm install && npm start
 4. Start the client side
-    a. npm install -g @vue/cli
-    b. cd client
-    c. npm install && npm run dev
-    d. access localhost:8080 with your browser
+    * npm install -g @vue/cli
+    * cd client
+    * npm install && npm run dev
+    * access localhost:8080 with your browser
 
 ### Database
 * We are using mysql database deployed in a docker container
@@ -87,3 +87,12 @@ Design a web application that allows employees to submit feedback toward each ot
 1. Node.js
 2. Docker installed and activated
 3. Vue cli installed globally (for the time being)
+
+### Screenshots
+![Alt text](/screenshots/login.png?raw=true "Login Page")
+
+![Alt text](/screenshots/admin_view.png?raw=true "Admin Page")
+
+![Alt text](/screenshots/employee_thumbnail.png?raw=true "List of employee")
+
+![Alt text](/screenshots/employee_view.png?raw=true "Employee Page")
