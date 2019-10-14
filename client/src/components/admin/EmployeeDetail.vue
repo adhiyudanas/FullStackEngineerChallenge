@@ -1,4 +1,5 @@
 <template>
+  <!-- listing feedbacks detail for employee-->
   <div class="employee-detail">
     <div class="detail-header">
       <h3>{{employeeInformation.name}}</h3>

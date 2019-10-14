@@ -55,6 +55,26 @@ Design a web application that allows employees to submit feedback toward each ot
     * npm install && npm run dev
     * access localhost:8080 with your browser
 
+### Current progress
+#### Admin view
+* Add/remove/update/view employees: View all the employees is possible
+* Add/update/view performance reviews: view performance review is possible 
+* Assign employees to participate in another employee's performance review: to be implemented
+
+#### Employee view
+* List of performance reviews requiring feedback: viewing only is possible
+* Submit feedback: to be implemented
+
+#### API
+* We managed to implement 3 api calls currently (get list of all the employees, get each employee feedbacks, and get each    employee requested reviews)
+* The other API calls such as adding new employee, submit feedback, and submit review have already been defined but not      yet to be used in the system
+* API calls for deleting the user is not yet defined
+
+#### Client
+* We created the basic layout and separated the UI components
+* Added basic styling for certain pages
+* Gave some basic user interaction
+
 ### Database
 * We are using mysql database deployed in a docker container
 * All the requirements are inclued in the database folder
@@ -74,6 +94,15 @@ Design a web application that allows employees to submit feedback toward each ot
 * Easy to refactor, fix, maintenance also another factors why we are using vue.js
 * We also separate the CSS files into separate directory, following FLOCSS principle (Foundation, Layout, Component)
 
+#### User Interface component's structure (currently implemented)
+-- Login Page (/pages/Login.vue)
+-- Admin Page (/pages/Admin.vue)
+    -- Header (components/Header.vue)
+    -- Employee Thumbnail (components/admin/EmployeeThumbnail.vue)
+        -- Employee Detail (components/admin/EmployeeDetail.vue)
+-- Employee Page (/pages/Employee.vue)
+    -- Header (components/Header.vue)
+
 ### Future Development
 1. In the future, we can manage all these commands by using docker-compose to build all together
 2. We should deploy 'models' for communication with the database for minimizing error
@@ -86,13 +115,17 @@ Design a web application that allows employees to submit feedback toward each ot
 ### General Requirement:
 1. Node.js
 2. Docker installed and activated
-3. Vue cli installed globally (for the time being)
+3. Vue cli installed
 
 ### Screenshots
+* Login page
 ![Alt text](/screenshots/login.png?raw=true "Login Page")
 
+* from the login page, if we logged in as admin, we will go go this page (Admin Page)
 ![Alt text](/screenshots/admin_view.png?raw=true "Admin Page")
 
-![Alt text](/screenshots/employee_thumbnail.png?raw=true "List of employee")
+* If we clicked on the employee thumbnail, another window will be popped up (employee feedback list)
+![Alt text](/screenshots/employee_thumbnail.png?raw=true "Employee feedback")
 
+* from the login page, if we logged in as employee, we will go go this page (Employee Page)
 ![Alt text](/screenshots/employee_view.png?raw=true "Employee Page")
